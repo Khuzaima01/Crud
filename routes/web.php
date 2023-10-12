@@ -18,8 +18,12 @@ Route::get('/', function () {
     return view('create');
 });
 
+// Route::get('/edit', [products_controller::class, 'edit'])->name('edit');
 
 Route::post('/create/product', [products_controller::class, 'create_product'])->name('create_product');
 
 Route::get('/show/products', [products_controller::class, 'show'])->name('show_products');
-Route::post('/delete/product', [products_controller::class, 'delete'])->name('delete_product');
+Route::get('/delete/product/{id}', [products_controller::class, 'delete'])->name('delete_product');
+
+Route::get('/edit/product/{id}', [products_controller::class, 'edit_product'])->name('edit_product');
+Route::post('/update/product/{id}', [products_controller::class, 'update_product'])->name('update_product');

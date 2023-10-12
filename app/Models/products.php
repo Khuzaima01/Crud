@@ -11,5 +11,4 @@ class products extends Model
 
     protected $fillable = ['name', 'price'];
 
-    // Other model code here...
 }

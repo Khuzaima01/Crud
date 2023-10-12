@@ -14,19 +14,19 @@
 </head>
 
 <body>
-    <form action="{{ route('create_product') }}" method="POST" enctype="multipart/form-data"
+    <form action="/update/product/{{ $product->id }}" method="POST" enctype="multipart/form-data"
         class=" w-25 mx-auto mt-5">
         @csrf
         <div class="form-group my-3">
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Name" name="name">
+                placeholder="Name" name="name" value="{{ $product->name }}">
         </div>
         @error('name')
             <p class=" text-danger">{{ $message }}</p>
         @enderror
         <div class="form-group my-3">
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="price" name="price">
+                placeholder="price" name="price" value="{{ $product->price }}">
         </div>
         @error('price')
             <p class=" text-danger">{{ $message }}</p>
@@ -34,11 +34,14 @@
         <div class="form-group my-3">
             <input type="file" name="image">
         </div>
-        @error('image')
-            <p class=" text-danger">{{ $message }}</p>
-        @enderror
         <button type="submit" class="btn btn-primary">Submit</button>
         <a class="mx-4" href="{{ route('show_products') }}">Show List</a>
+        @if (!empty($product->img_path))
+            <div class=" mt-4">
+                <span>Old Image</span>
+                <img width="200px" src="{{ asset('images/' . $product->img_path) }}" alt="">
+            </div>
+        @endif
     </form>
 </body>
 
