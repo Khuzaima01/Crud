@@ -63,7 +63,7 @@ class products_controller extends Controller
             ->where('product_id', $id)
             ->join('products', 'products.id', '=', 'product_images.product_id')
             ->select('products.id', 'products.name', 'products.price', 'product_images.img_path')
-            ->first(); // Use first() to retrieve a single result
+            ->first();
 
         return view('edit', compact('product'));
     }
